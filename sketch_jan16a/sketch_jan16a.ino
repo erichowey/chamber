@@ -11,11 +11,9 @@ int backPin = 5;
 int playPin = 6;
 int forwardPin = 7;
 int ledPin = 11;
-int toggleVoxSwitch = 10;
-int resetSwitch = 2;
 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 200;    // the debounce time; increase if the output flickers
+unsigned long debounceDelay = 100;    // the debounce time; increase if the output flickers
 
 // Eyes Globals
 int ledOff = 0;
@@ -35,13 +33,9 @@ int currentTrack;
 void setup() {
   
   pinMode(ledPin, OUTPUT);
-  pinMode(toggleVoxSwitch, INPUT_PULLUP);
-  pinMode(resetSwitch, INPUT_PULLUP);
   pinMode(backPin, INPUT_PULLUP);
   pinMode(playPin, INPUT_PULLUP);
   pinMode(forwardPin, INPUT_PULLUP);
-  
-  attachInterrupt(resetSwitch, stopAndResetBrightness, CHANGE);
   
   stopAndResetBrightness();
   audioSetup();
